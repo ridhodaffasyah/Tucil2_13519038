@@ -26,6 +26,6 @@
 > - Tekan Enter.
 
 ## 4. Author
-> Nama  : Ridho Daffasyah
-> NIM   : 13519038
-> Teknik Informatika 2019 - Institut Teknologi Bandung
+> - Nama  : Ridho Daffasyah
+> - NIM   : 13519038
+> - Teknik Informatika 2019 - Institut Teknologi Bandung
