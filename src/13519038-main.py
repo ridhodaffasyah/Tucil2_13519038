@@ -1,3 +1,8 @@
+#Nama  : Ridho Daffasyah
+#NIM   : 13519038
+#Kelas : 01
+#Tugas Kecil 2 - IF2211 Strategi Algoritma
+
 import string
 import os.path
 topoSort = __import__('13519038-toposort')
@@ -32,11 +37,15 @@ def bacaInput(inputFile):
     return daftar_matkul_dan_prereq3
 
 def printRencanaKuliah():
-    
-    for i in range(len(topoSort.hasilTopo)):
+
+    i = 0
+    while (i < len(topoSort.hasilTopo)):
         print("Semester", i+1, ":", end="")
-        for j in range(len(topoSort.hasilTopo[i])):
+        j = 0
+        while(j < len(topoSort.hasilTopo[i])):
             print(topoSort.hasilTopo[i][j], end=" ")
+            j += 1
+        i += 1 
         print("\r")
 
 def mainProgram():

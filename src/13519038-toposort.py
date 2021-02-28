@@ -5,23 +5,29 @@ simpan_matkul = []
 def pilihHapusSimpulDerajatNol(list_matkul):
 
     derajat_simpul = []
-    for x in list_matkul:
-        if (len(x) == 1):
+    x = 0
+    while (x < len(list_matkul)):
+        if (len(list_matkul[x]) == 1):
             derajat_simpul  = 0
             #derajat simpul nol dapat dihitung dari (len(x))
+        x+=1
 
     simpul_derajat_nol = []
-    
-    for x in list_matkul:
-        if (len(x) == derajat_simpul+1):
+
+    i = 0
+    while(i < len(list_matkul)):
+        if (len(list_matkul[i]) == derajat_simpul+1):
             #simpan simpul berderajat nol
-            simpul_derajat_nol.append(x[0])
+            simpul_derajat_nol.append(list_matkul[i][0])
             #tempat simpan matkul sementara
-            simpan_matkul.append(x[0])
+            simpan_matkul.append(list_matkul[i][0])
+        i+=1
                 
     #Hapus simpul yang berderajat nol (matakuliah tanpa prereq) dari list matakuliah
-    for x in simpul_derajat_nol:
-        list_matkul.remove([x])
+    j = 0
+    while (j < len(simpul_derajat_nol)):
+        list_matkul.remove([simpul_derajat_nol[j]])
+        j+=1
 
     #Catat mata kuliah yang derajat nol ke array 
     hasilTopo.append(simpul_derajat_nol)
@@ -43,11 +49,15 @@ def pendekatanTopologicalSort(list_matkul):
     # 3. Ambil simpul tersebut, dan hilangkan simpul tersebut beserta semua busur yang keluar dari simpul tersebut pada graf.
     #dan kurangi derajat simpul yang berhubungan dengan simpul tersebut dengan 1.
     #Hapus simpul yang bersisian dengan simpul berderajat nol yang dipilih
-    for j in range(len(simpan_matkul)):
-        for y in list_matkul:
-            if (y.count(simpan_matkul[j]) == 1):
-                    y.remove(y[y.index(simpan_matkul[j])])
-
+    j = 0
+    while (j < len(simpan_matkul)):
+        y = 0
+        while (y < len(list_matkul)):
+            if (list_matkul[y].count(simpan_matkul[j]) == 1):
+                list_matkul[y].remove(list_matkul[y][list_matkul[y].index(simpan_matkul[j])])
+            y += 1
+        j += 1
+                
     #basis jika sudah tidak ada matakul yang harus diambil
     if (len(list_matkul) == 0):
         return
